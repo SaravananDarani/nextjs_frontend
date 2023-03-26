@@ -1,9 +1,29 @@
 import layout from '@/common/layout/layout'
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 import logo from "@/public/contactus.jpg"
 import Image from 'next/image'
+import Alignment from './common/alignment'
+import { Constants } from '@/common/constants/constants'
+import { IndexServices } from '@/services/config'
+import { getServices } from '@/services/fetchdata'
+
 const contact = () => {
+    const [data, setData] = useState();
+    const [title, setTitle] = useState();
+
+    useEffect(() => {
+        async function fetch() {
+            var req = {
+                dataId: { id: Constants.webid },
+                url: `${IndexServices.MasterServices.contactUrl}`,
+            }
+            const response = await getServices.getIdData(req);
+            const fetched = await response.data[0];
+            setData(fetched)
+            setTitle(fetched.title)
+        }
+        fetch();
+    }, []);
     return (
         <div className='row contact-content'>
 
@@ -40,15 +60,11 @@ const contact = () => {
                 </div>
             </div>
             <div className='col-md-6'>
-                <Image
-                    src={logo}
-                    alt="Picture of the author"
-                    className="rounded float-start"
-                    width={500}
-                    height={500}
-                />
+                {data && <Image data={data} />}
             </div>
-
+            <div className='col-12'>
+                {title && <Alignment data={title} />}
+            </div>
         </div >
     )
 }

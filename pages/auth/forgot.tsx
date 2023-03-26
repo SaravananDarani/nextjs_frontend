@@ -52,7 +52,7 @@ export default function Forgot() {
                         <div className="container text-center">
                             <Image
                                 src={logo}
-                                alt="Picture of the author"
+                                alt=""
                                 className="d-inline-block align-text-top"
                                 width={80}
                                 height={80}
@@ -68,6 +68,7 @@ export default function Forgot() {
                                 <FormInput
                                     key={input.id}
                                     {...input}
+                                    hidden={"false"}
                                     onChange={handleChange}
                                     defaultValue={state[input.name]}
                                     errors={errors}

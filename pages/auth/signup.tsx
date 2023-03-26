@@ -69,7 +69,7 @@ export default function Signup() {
                         <br></br>
                         <div className="container text-center"><Image
                             src={logo}
-                            alt="Picture of the author"
+                            alt=""
                             className="d-inline-block align-text-top"
                             width={80}
                             height={80}
@@ -85,6 +85,7 @@ export default function Signup() {
                                 <FormInput
                                     key={input.id}
                                     {...input}
+                                    hidden={"false"}
                                     onChange={handleChange}
                                     defaultValue={state.email}
                                     errors={errors}

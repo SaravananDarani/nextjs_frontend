@@ -67,15 +67,15 @@ const company = (props: any) => {
                                             pathname: '/admin/master/company/companyadd',
                                             query: { id: nextBase64.encode(list.id), view: nextBase64.encode('1') },
                                         }}
-                                    > View </Link>
+                                    ><i className="bi bi-eye-fill"></i> View </Link>
                                     <Link className="nav-link black"
                                         href={{
                                             pathname: '/admin/master/company/companyadd',
                                             query: { id: nextBase64.encode(list.id), view: nextBase64.encode('2') },
                                         }}
-                                    > Edit </Link>
+                                    ><i className="bi bi-pencil-fill"></i>  Edit </Link>
                                     <DropdownItem onClick={() => deletes(list.id)}  >
-                                        <span  ><i className="la la-trash"></i>  Delete</span>
+                                        <span  ><i className="bi bi-trash-fill"></i>  Delete</span>
                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
@@ -90,16 +90,16 @@ const company = (props: any) => {
         <div className='content-box'>
             <div className='row'>
                 <div className='col-md-6 text-left'>
-                    <p>  Company List</p>
+                    <p> <i className="bi bi-building-fill-gear"></i> Company List</p>
                 </div>
                 <div className='col-md-6 text-end'>
                     <button type="button" onClick={addNew} className="btn btn-brand btn-icon-sm  btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Add New
+                        <i className="bi bi-plus-lg"></i> Add New
                     </button>
                 </div>
             </div>
             <table className="table table-striped-table-bordered caption-top table-hover table-checkable" id="kt_table_1">
-                <caption>List of company</caption>
+                <caption> <i className="bi bi-buildings"></i> List of company</caption>
                 <thead>
                     <tr>
                         <th>#</th>

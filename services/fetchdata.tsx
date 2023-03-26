@@ -1,10 +1,9 @@
-import { Constants } from '@/common/constants/Constants';
+
 import { TokenServices } from '@/services/token/token';
 import axios from 'axios';
 export const getServices = {
     getData,
     getIdData,
-    filterPartition,
     deleteData,
     addData,
     updateData,
@@ -85,33 +84,6 @@ function deleteData(db: any) {
     })
 };
 
-function filterPartition(data: object, index: number) {
-    const keys = ["username", "host", "vendor_name", "customer_name", "filename",
-        "created_at", "invoice_number"];
-    if (data) {
-        var partitionData = '';
-        for (const [key, value] of Object.entries(data)) {
-            partitionData =
-                value !== ''
-                    ? keys.includes(key)
-                        ? `${partitionData}&filter[${key}][like]=${value}`
-                        : index && (key === 'gte' || key === 'lte')
-                            ? `${partitionData}&filter[invoice_date][${key}]=${value}`
-                            : !index && key === 'gte'
-                                ? `${partitionData}&filter[created_at][${key}]=${value} 00:00:00`
-                                : !index && key === 'lte'
-                                    ? `${partitionData}&filter[created_at][${key}]=${value} 23:59:59`
-                                    : key === Constants.assignedTo && value === Constants.all
-                                        ? `${partitionData}&filter[${key}][neq]NULL`
-                                        : key === Constants.actionItem ? getActionFilter(partitionData, value)
-                                            : `${partitionData}&filter[${key}]=${value}`
-                    : partitionData;
-        }
-        return partitionData;
-    } else {
-        return '';
-    }
-};
 
 function getDatatest(db: any) {
     const HEADERS = TokenServices.getrdToken();

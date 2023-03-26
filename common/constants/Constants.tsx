@@ -14,18 +14,6 @@ const numCharOne = "1";
 const numCharTwo = "2";
 const numCharThree = "3";
 const numCharFour = "4";
-const hybrent = "hybrent";
-const hybrentCom = ".hybrent.com";
-const vendorName = "vendor_name";
-const vendorId = "vendor_id";
-const customerName = "customer_name";
-const poNumber = "po_number";
-const dashboard = "dashboard";
-const invoiceManager = "invoice_manager";
-const adminSettings = "admin_settings";
-const manageUser = "manage_user";
-const manageEmail = "manage_email";
-const manageFtp = "manage_ftp";
 const userMenu = "user_menu";
 const logout = "logout";
 const add = "add";
@@ -35,49 +23,7 @@ const invoiceNo = "invoice_number";
 const invoiceNoPattern = /[^a-zA-Z0-9-#]/g
 const noNagativePattern = /[^0-9]/g
 const yetProcess = "Yet to be Processed";
-const poReview = "PO Review";
-const ocrReview = "OCR Review";
-const contactCustomer = "Contact Customer";
-const ocrPoReview = "OCR & PO Review";
-const invoiceNumberExist = "Invoice number already exists";
-const ocrVerifyError = "Please remove/resolve the mismatched line items to proceed";
-const assignErrMsg = "Please select atleast one invoice to assign";
-const hybrentErrMsg = "Please select atleast one invoice to Send to Hybrent";
-const invoiceAtleasetErrMsg = "Please add atleast one line item";
-const sendtoHybrentErrMsg = "Selected Invoices have been successfully sent to Hybrent Platform.";
-const addEditInvoiceErrMsg = "Invoice add/update successfully.";
-const addEditErrMsg = "Invoice Added Successfully";
-const successSendToErrMsg = "Invoice have been successfully sent to Hybrent Platform.";
-const failSendToErrMsg = "Invoice could not be sent.";
-const successMoreSendToErrMsg = "Invoice(s) have been successfully sent to Hybrent Platform.";
-const failMoreSendToErrMsg = "Invoice(s) could not be sent.";
-const waitPoErrMsg = "Waiting for PO Approval.";
 const waitMsg = "Please wait...";
-const vendorErrMsg = "Please select a Customer";
-const totalAmount = "total_amount";
-const unitPrice = "unit_price";
-const departments = "departments";
-const inputNumber = "number";
-const inputText = "text";
-const inputSelect = "select";
-const inputTrue = "true";
-const assignedTo = "assigned_to";
-const invoiceNumberPrefix = "INV-";
-const invoiceDate = "invoice_date";
-const afterDueDateTotal = "after_due_date_total";
-const invoiceDueAmount = "total_invoice_amount_due";
-const totalInvoiceAmountDue = "total_invoice_amount_due";
-const invoiceAmount = "invoice_amount";
-const poAmount = "po_amount";
-const taxes = "taxes";
-const shippingAddress = "shipping_address";
-const facility = "facility";
-const siteLink = "site_link";
-const freight = "freight";
-const invoiceDueDate = "invoice_due_date";
-const miscCharges = "misc_charges";
-const paymentTerms = "payment_terms";
-const discountAmounts = "discount_amounts";
 const imagePng = "image/png";
 const imageJpg = "image/jpg";
 const imageJpeg = "image/jpeg";
@@ -108,31 +54,10 @@ const unknownError = "Something went wrong. Please try later.";
 const deleteSuccessMessage = "Invoice has been deleted successfully.";
 const tokenSuccessMsg = "The token was successfully received.";
 const refreshToken = "refresh_token";
-const poStatus = {
-    searchPo: 0,
-    verifyPo: 1,
-    resetPo: 2,
-    unVerifyPo: 3,
-    multiplePo: 4
-}
-const actionItems = {
-    ocrVerify: 1,
-    poVerify: 2,
-    markProcessed: 3,
-    contactCustomer: 4,
-    revertNeedsReview: 5
-}
 const userRole = {
     admin: 10,
     nonAdmin: 5
 }
-const filterActionItems = [
-    { "id": "1", "name": "OCR & PO Review" },
-    { "id": "2", "name": "OCR Review" },
-    { "id": "3", "name": "PO Review" },
-    { "id": "4", "name": "Yet to be Processed" },
-    { "id": "5", "name": "Contact Customer" }
-]
 const forbidden = 403;
 const baseURL = "/app/dashboard";
 const authenticationType = "auth_type_id";
@@ -140,48 +65,55 @@ const protocolId = "protocol_id";
 const textarea = "textarea";
 const confirmPassword = "confirmPassword";
 const password = "password";
-const ftp = "ftp";
-const mail = "mail";
-
+const success = "success";
+const routerUrl = {
+    sliderAddUrl: "/admin/home/slider/slider",
+    sliderUrl: "/admin/home/slider",
+    secondSliderAddUrl: "/admin/home/secondSlider/secondSlider",
+    secondSliderUrl: "/admin/home/secondSlider",
+    columeAddUrl: "/admin/home/colume/colume",
+    columeUrl: "/admin/home/colume",
+    clientAddUrl: "/admin/home/client/client",
+    clientUrl: "/admin/home/client",
+}
+const deleteConfirmMsg = "Please confirm delete this record."
+const dateFormate = "DD/MM/YYYY";
+const droupDownList = {
+    view: "View",
+    edit: "Edit",
+    delete: "Delete",
+    add: "Add",
+    addNew: "Add New",
+    update: "Update",
+    submit: "Submit",
+}
+const imgPath = "http://localhost:3001/public/uploads/originals/"
+const undefined = "undefined";
+let defaultCompany: any = "", web: any = {}, webid: any = 0, menu: any = {};
+if (typeof window !== 'undefined') {
+    defaultCompany = localStorage.getItem('defaultCompany');
+    web = sessionStorage.getItem('web');
+    webid = sessionStorage.getItem('webid');
+    menu = sessionStorage.getItem('menu');
+}
 export const Constants = {
     imagePng, imageJpg, imageJpeg, applicationPdf,
     isString, textPlain,
     ThreeDots, numZero,
     numOne, numTwo, numThree, numFour, numFive,
-    numTen, num100, numCharOne, numCharTwo, numCharThree, numCharFour, hybrent,
-    vendorName, customerName,
-    poStatus, actionItems,
-    numCharZero, poNumber,
-    dashboard, invoiceManager, adminSettings,
-    manageUser, manageEmail, manageFtp, userMenu,
+    numTen, num100, numCharOne, numCharTwo, numCharThree, numCharFour, userMenu,
     logout, adminSettingsMenu, add, update, invoiceNo,
-    yetProcess, poReview, ocrReview, contactCustomer,
-    ocrPoReview, invoiceNumberExist, ocrVerifyError,
-    assignErrMsg, hybrentErrMsg,
-    invoiceAtleasetErrMsg, waitMsg, vendorErrMsg, vendorId,
-    assignedTo, userRole, invoiceNumberPrefix,
-    totalAmount,
-    unitPrice,
-    inputNumber,
-    inputText,
-    inputSelect,
-    inputTrue,
+    yetProcess, waitMsg, userRole,
     invoiceNoPattern,
-    noNagativePattern, departments,
-    invoiceDate,
-    afterDueDateTotal, totalInvoiceAmountDue, poAmount, taxes,
-    shippingAddress, facility, siteLink, freight, invoiceAmount,
-    invoiceDueDate, miscCharges, paymentTerms, discountAmounts,
-    hybrentCom, invoiceDueAmount, sendtoHybrentErrMsg, addEditInvoiceErrMsg,
-    successSendToErrMsg, failSendToErrMsg,
-    successMoreSendToErrMsg, failMoreSendToErrMsg, waitPoErrMsg, addEditErrMsg,
+    noNagativePattern,
     all, zoomIn, zoomOut, pageUp, pageDown, openFile, downloadFile, clearFile,
     attachementSizeErr, clear, attachmentExtensionErr, attachementRestriction,
     review, processed, selectAll, pdfRestriction, download, basee64PDF, allowFileSize,
     internalServerErr,
     forbidden,
-    baseURL, actionItem, filterActionItems,
+    baseURL, actionItem,
     deleteConfirmMessage, unknownError, deleteSuccessMessage,
     authenticationType, protocolId, textarea, confirmPassword,
-    password, ftp, mail, tokenSuccessMsg, refreshToken
+    password, tokenSuccessMsg, refreshToken, success, routerUrl, deleteConfirmMsg, dateFormate,
+    droupDownList, imgPath, undefined, defaultCompany, web, menu, webid
 }
