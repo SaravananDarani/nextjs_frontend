@@ -1,5 +1,5 @@
 import { FormFieldInterface } from '@/common/interface/FormFieldInterface';
-import { GlobleImport } from '@/pages/globleImport';
+import { GlobleImport } from '@/pages/globleImport'; 
 
 const { FormInput,
     IndexServices, getServices, swal,
@@ -88,39 +88,57 @@ const companyadd = () => {
         }
     }, [idIndex, id, states])
 
-    return (
-        <div className='content-box'>
-            <h3> <b><u>  Company {view === "" ? "Add" : view === "1" ? "View" : view === "2" ? "Edit" : ""}</u></b></h3>
 
-            <div className='row'>
-                <div className='col-md-4'>
-                    <form>
-                        {inputs.map((input) => (
-                            <FormInput
-                                key={input.id}
-                                {...input}
-                                hidden={"false"}
-                                onChange={handleChange}
-                                defaultValue={state[input.name]}
-                                errors={errors}
-                                onBlur={onBlur}
-                            />
-                        ))}
-                        <br></br>
-                        <div className="text-end">
-                            <button type="submit"
-                                hidden={view === "1" ? true : false}
-                                disabled={!isValidForm}
-                                onClick={handleSubmit}
-                                className="btn btn-primary">
-                                {view === "" ? "Add" : view === "1" ? "" : view === "2" ? "Edit" : ""}
-                            </button>
-                        </div>
-                    </form>
+    return (
+        <>
+            <div className='content-box'>
+                <h3> <b><u>  Company {view === "" ? "Add" : view === "1" ? "View" : view === "2" ? "Edit" : ""}</u></b></h3>
+
+                <div className='row'>
+                    <div className='col-md-4'>
+                        <form>
+                            {inputs.map((input) => (
+                                <FormInput
+                                    key={input.id}
+                                    {...input}
+                                    hidden={"false"}
+                                    onChange={handleChange}
+                                    defaultValue={state[input.name]}
+                                    errors={errors}
+                                    onBlur={onBlur}
+                                />
+                            ))}
+                            <br></br>
+                            <div className="text-end">
+                                <button type="submit"
+                                    hidden={view === "1" ? true : false}
+                                    disabled={!isValidForm}
+                                    onClick={handleSubmit}
+                                    className="btn btn-primary">
+                                    {view === "" ? "Add" : view === "1" ? "" : view === "2" ? "Edit" : ""}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    {/* <div className='col-md-8'>
+                        {view === "1" &&
+                            <AllTabs id={id} />
+                        }
+                    </div> */}
                 </div>
-                <div className='col-md-8'> </div>
-            </div>
-        </div>
+            </div >
+
+            {/* //     view === "1" &&
+            //     <>
+            //         <div className='col-md-12 subheader'> {state.companyname} {state.alaisename}</div>
+            //         <div className='col-md-12'>
+            //             {view === "1" &&
+            //                 <AllTabs id={id} />
+            //             }
+            //         </div>
+            //     </>
+            // } */}
+        </>
     )
 }
 

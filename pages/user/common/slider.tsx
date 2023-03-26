@@ -1,36 +1,57 @@
-import React from 'react'
+import { GlobleImport } from '@/pages/globleImport';
+
+const { useEffect, IndexServices, getServices, useState, Constants } = GlobleImport;
+
+const { imgPath } = Constants;
 
 const slider = () => {
+    const [userData, setUserData] = useState([]);
+    useEffect(() => {
+        const req = { dataId: { id: Constants.webid }, url: IndexServices.MasterServices.SliderUrl }
+        getServices.getIdData(req).then((res: any) => {
+            if (res.status === Constants.success) {
+                const { data } = res;
+                setUserData(data);
+            }
+        })
+    }, []);
+
+
+    if (userData) {
+        var commentNodes: any = userData.map((list: any, i: number) => {
+            return (
+                <div className={i === 0 ? "carousel-item active" : "carousel-item"}>
+                    <img src={`${imgPath}${list.img}`} width={200} className="boarder-radius bd-placeholder-img bd-placeholder-img-lg d-block w-100" />
+                    <div className="carousel-caption d-none d-md-block">
+                        <h5>{list.name}</h5>
+                        <p>{list.title}</p>
+                        <p>{list.subtitle}</p>
+                    </div>
+                </div>
+            );
+        });
+    }
+
     return (
         <div>
-            <div id="carouselExampleCaptions" className="carousel slide">
+            <div id="carouselExampleCaptions" className="carousel slide tabsbackground">
                 <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    {userData && userData.map((list: any, i: number) => {
+                        return (
+                            <button
+                                type="button"
+                                data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide-to={i}
+                                className={i === 0 ? "active" : ""}
+                                aria-current={i === 0 ? "true" : "false"}
+                                aria-label={`Slide ${i + 1}`} >
+                            </button>
+                        );
+                    })}
                 </div>
+
                 <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
+                    {commentNodes}
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,7 +63,7 @@ const slider = () => {
                 </button>
             </div>
 
-        </div>
+        </div >
     )
 }
 

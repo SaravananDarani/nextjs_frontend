@@ -1,5 +1,3 @@
-
-
 export const userHeadCell: Array<any> = [
     {
         field: 'id',
@@ -25,5 +23,4 @@ export const userHeadCell: Array<any> = [
         editable: false,
 
     },
-
 ]

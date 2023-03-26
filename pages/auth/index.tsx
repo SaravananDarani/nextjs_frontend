@@ -36,7 +36,7 @@ export default function Forgot() {
                     sessionStorage.setItem('lastname', lastname);
                     sessionStorage.setItem('role', role);
                     router.push({
-                        pathname: '/admin/dashboard',
+                        pathname: '/auth/company',
                         query: { returnUrl: "login successfully" }
                     });
                 }
@@ -80,6 +80,7 @@ export default function Forgot() {
                                 <FormInput
                                     key={input.id}
                                     {...input}
+                                    hidden={"false"}
                                     onChange={handleChange}
                                     defaultValue={state[input.name]}
                                     errors={errors}

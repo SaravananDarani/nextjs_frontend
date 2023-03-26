@@ -22,6 +22,7 @@ const FormInput = (props: any) => {
                         helperText={errors?.[name]}
                         onBlur={onBlur}
                     />
+                    {errors?.[name]}
                 </div>
             }
         </>

@@ -3,8 +3,9 @@ import * as React from 'react';
 import logo from "@/public/nologo.png"
 import Image from 'next/image'
 import Link from 'next/link';
-import AccountMenu from './AccountMenu';
+import AccountMenu from './accountMenu';
 import router from 'next/router';
+import HeaderCompany from './headerCompany';
 
 const logout = () => {
     sessionStorage.removeItem('userId');
@@ -21,6 +22,7 @@ let lables: any = "";
 if (typeof window !== 'undefined') {
     lables = sessionStorage.getItem('firstname') ? sessionStorage.getItem('firstname') : "";
 }
+
 export const mainListItems = (
     <>
         <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -50,6 +52,9 @@ export const mainListItems = (
                             <Link className="nav-link" href={{ pathname: '/admin/abouts', query: { name: 'test' }, }} passHref> About </Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" href={{ pathname: '/admin/contact', query: { name: 'test' }, }} passHref> Contact </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" href={{ pathname: '/admin/user', query: { name: 'list' }, }} passHref> User </Link>
                         </li>
 
@@ -60,6 +65,9 @@ export const mainListItems = (
                             <ul className="dropdown-menu">
                                 <li>
                                     <Link className="dropdown-item" href={{ pathname: '/admin/master/company', query: { name: 'test' }, }} passHref> Company </Link>
+                                </li>
+                                <li>
+                                    <Link className="dropdown-item" href={{ pathname: '/admin/master/host', query: { name: 'localhost' }, }} passHref> Host </Link>
                                 </li>
                                 <li>
                                     <Link className="dropdown-item" href={{ pathname: '/admin/master/logo', query: { name: 'test' }, }} passHref> Logo </Link>
@@ -75,8 +83,11 @@ export const mainListItems = (
                         </li>
                     </ul>
                 </div>
-                <span className="navbar-text">
+                <div className="navbar-text">
                     <div className="collapse navbar-collapse" >
+                        <li className="nav-item dropdown" style={{ "listStyle": "none", marginRight: 10 }}>
+                            <HeaderCompany />
+                        </li>
                         <li className="nav-item dropdown" style={{ "listStyle": "none" }}>
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {lables !== "" ? <AccountMenu /> : ""}
@@ -88,9 +99,8 @@ export const mainListItems = (
                             </ul>
                         </li>
                     </div>
-                </span>
+                </div>
             </div>
-
         </nav>
     </>
 );

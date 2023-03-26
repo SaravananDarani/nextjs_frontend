@@ -120,3 +120,151 @@ export const CompanyInput: Array<FormFieldInterface> = [
         required: true,
     },
 ];
+
+
+export const HostInput: Array<FormFieldInterface> = [
+    {
+        id: 1,
+        name: "name",
+        type: "text",
+        errorMessage: "",
+        label: "",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    }
+];
+
+
+export const LogoInput: Array<FormFieldInterface> = [
+    {
+        id: 1,
+        name: "name",
+        type: "file",
+        errorMessage: "",
+        label: "",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    }
+];
+
+export const MenuInput: Array<FormFieldInterface> = [
+    {
+        id: 1,
+        name: "menuName",
+        type: "text",
+        errorMessage: "",
+        label: "Menu Name",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 2,
+        name: "menuPath",
+        type: "text",
+        errorMessage: "",
+        label: "Menu Link",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 3,
+        name: "menuIcon",
+        type: "text",
+        errorMessage: "",
+        label: "Menu Icon",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    }
+];
+
+export const SliderInput: Array<FormFieldInterface> = [
+    {
+        id: 3,
+        name: "img",
+        type: "file",
+        errorMessage: "",
+        label: "Image",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 1,
+        name: "name",
+        type: "text",
+        errorMessage: "",
+        label: " Name",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 2,
+        name: "title",
+        type: "text",
+        errorMessage: "",
+        label: "Title",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 3,
+        name: "subtitle",
+        type: "text",
+        errorMessage: "",
+        label: "Sub Title",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+
+];
+
+export const SecondSliderInput: Array<FormFieldInterface> = [
+    {
+        id: 1,
+        name: "name",
+        type: "text",
+        errorMessage: "",
+        label: " Name",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 2,
+        name: "title",
+        type: "text",
+        errorMessage: "",
+        label: "Title",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 3,
+        name: "subtitle",
+        type: "text",
+        errorMessage: "",
+        label: "Sub Title",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+];
+
+export const ClientInput: Array<FormFieldInterface> = [
+    {
+        id: 3,
+        name: "img",
+        type: "file",
+        errorMessage: "",
+        label: "Image",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+    {
+        id: 1,
+        name: "name",
+        type: "text",
+        errorMessage: "",
+        label: " Name",
+        pattern: "^[A-Za-z0-9]{3,16}$",
+        required: true,
+    },
+
+];
