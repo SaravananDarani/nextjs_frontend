@@ -1,9 +1,7 @@
 import layout from '@/common/layout/layout'
 import React, { useEffect, useState } from 'react'
-import logo from "@/public/contactus.jpg"
-import Image from 'next/image'
 import Alignment from './common/alignment'
-import { Constants } from '@/common/constants/constants'
+import { Constants } from '@/common/constants/Constants'
 import { IndexServices } from '@/services/config'
 import { getServices } from '@/services/fetchdata'
 
@@ -60,7 +58,7 @@ const contact = () => {
                 </div>
             </div>
             <div className='col-md-6'>
-                {data && <Image data={data} />}
+
             </div>
             <div className='col-12'>
                 {title && <Alignment data={title} />}

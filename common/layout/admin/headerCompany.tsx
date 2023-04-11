@@ -1,4 +1,4 @@
-import { Constants } from '@/common/constants/constants';
+import { Constants } from '@/common/constants/Constants';
 import { IndexServices } from '@/services/config';
 import { getServices } from '@/services/fetchdata';
 import { useEffect, useState } from 'react';

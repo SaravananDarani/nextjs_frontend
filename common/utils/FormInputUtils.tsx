@@ -27,7 +27,7 @@ export const RegisterInput: Array<FormFieldInterface> = [
         name: "firstname",
         type: "text",
         errorMessage: "",
-        label: "First Name",
+        label: "First Names",
         required: true,
     }, {
         id: 2,

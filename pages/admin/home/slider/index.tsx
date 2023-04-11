@@ -135,19 +135,7 @@ const index = (props: any) => {
           {commentNodes}
         </tbody>
       </table>
-      <Pagination
-        activePage={pageNumber}
-        pageCount={pagecount}
-        itemsCountPerPage={limit}
-        totalItemsCount={50}
-        pageRangeDisplayed={1}
-        breakLabel={"..."}
-        marginPagesDisplayed={2}
-        onChange={(e: any) => {
-          this.setState({ work: e.target.value })
-        }}
-        onChange={handlePageChange.bind(this)}
-      />
+
     </div>
   )
 }

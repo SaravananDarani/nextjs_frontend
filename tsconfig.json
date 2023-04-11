@@ -25,11 +25,17 @@
       ]
     },
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "model/schema.js"
+    "model/schema.js",
+    "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

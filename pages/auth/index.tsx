@@ -36,8 +36,7 @@ export default function Forgot() {
                     sessionStorage.setItem('lastname', lastname);
                     sessionStorage.setItem('role', role);
                     router.push({
-                        pathname: '/auth/company',
-                        query: { returnUrl: "login successfully" }
+                        pathname: role === 1 ? '/auth/company' : '/shops/dashboard'
                     });
                 }
             } else {
@@ -54,13 +53,7 @@ export default function Forgot() {
             <div className=''>
                 <div className='row '>
                     <div className='col-md-6' style={{ height: "100%" }}></div>
-                    <div className='col-md-5'>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
+                    <div className='col-md-5 middel-align'>
                         <div className="container text-center">
                             <Image
                                 src={logo}
@@ -75,7 +68,7 @@ export default function Forgot() {
                                 <p>User SignIn.</p>
                             </blockquote>
                         </figure>
-                        <form className="row g-3"  >
+                        <form className="row g-3" autoComplete="off"  >
                             {inputs.map((input) => (
                                 <FormInput
                                     key={input.id}
@@ -89,7 +82,7 @@ export default function Forgot() {
                             ))}
                             <div className="col-12 text-end">
                                 <button type="submit"
-                                    // disabled={!isValidForm}
+                                    disabled={!isValidForm}
                                     onClick={handleSubmit}
                                     className="btn btn-primary">Sign In</button>
                             </div>

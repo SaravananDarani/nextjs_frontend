@@ -6,7 +6,7 @@ import { GlobleImport } from '../globleImport';
 import logo from "@/public/nologo.png"
 import Image from 'next/image'
 import { useRouter } from 'next/router';
-import { Constants } from '@/common/constants/constants';
+import { Constants } from '@/common/constants/Constants';
 const company = () => {
     const [employees, setEmployees] = useState([]);
     const [company, setCompany] = useState("0");

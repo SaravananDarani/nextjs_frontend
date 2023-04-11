@@ -1,6 +1,6 @@
-import { Constants } from "@/common/constants/constants";
+import { Constants } from "@/common/constants/Constants";
 import Link from "next/link";
-
+import Logo from "@/common/headerLogo/headerLogo"
 const header = (props: any) => {
     const { data, menuData } = props
     const files = data?.logo;
@@ -88,12 +88,13 @@ const header = (props: any) => {
                     <a className="navbar-brand header-nav" href="#">
                         <div className="row">
                             <div className="col-md-3">
-                                <img
-                                    src={path}
-                                    className="header-logo "
-                                    height={40} /></div>
+                                <Logo
+                                    path={path}
+                                    height={40}
+                                />
+                            </div>
                             <div className="col-md-8 aligntop">
-                                <h5 className=" header-title">{data?.title}</h5>
+                                <h5 className="header-title">{data?.title}</h5>
                             </div>
                         </div>
                     </a>

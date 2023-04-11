@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormFieldInterface } from '@/common/interface/FormFieldInterface';
 import { GlobleImport } from '@/pages/globleImport';
-import { Constants } from '@/common/constants/constants';
+import { Constants } from '@/common/constants/Constants';
 const { FormInput,
     IndexServices, getServices, swal,
     useForm, validator, useRouter, adminLayout, HostInput, nextBase64,

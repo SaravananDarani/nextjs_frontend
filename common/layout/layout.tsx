@@ -1,6 +1,7 @@
 import { GlobleImport } from '@/pages/globleImport';
 const {
-    IndexServices, getServices, useEffect, useState, Constants
+    IndexServices, getServices, useEffect, useState, Constants,
+    useRouter,
 } = GlobleImport;
 import Header from "./web/header";
 import Footer from "./web/footer"
@@ -8,6 +9,7 @@ import Footer from "./web/footer"
 let idIndex = 0;
 
 const layout = ({ children }: any) => {
+    const router = useRouter();
     const [states, setStates]: any = useState({});
     const [hostname, setHostname]: any = useState('');
     const [menuData, setMenuData] = useState([]);
@@ -17,17 +19,22 @@ const layout = ({ children }: any) => {
             url: `${IndexServices.MasterServices.MasterUrl}/host/find`,
         }
         const { data } = await getServices.getIdData(db);
-        setStates(data)
-        sessionStorage.setItem('web', JSON.stringify(data));
-        sessionStorage.setItem('webid', JSON.stringify(data.id));
-        var req = {
-            dataId: { id: data.id ? data.id : Constants.defaultCompany },
-            url: IndexServices.MasterServices.MenuUrl,
+        console.log(data)
+        if (data !== undefined) {
+            setStates(data)
+            sessionStorage.setItem('web', JSON.stringify(data));
+            sessionStorage.setItem('webid', JSON.stringify(data.id));
+            var req = {
+                dataId: { id: data.id ? data.id : Constants.defaultCompany },
+                url: IndexServices.MasterServices.MenuUrl,
+            }
+            const response = await getServices.getIdData(req);
+            const fetched = await response?.data;
+            setMenuData(fetched);
+            sessionStorage.setItem('menu', JSON.stringify(fetched));
+        } else {
+            router.push({ pathname: '/auth/noturl' });
         }
-        const response = await getServices.getIdData(req);
-        const fetched = await response?.data;
-        setMenuData(fetched);
-        sessionStorage.setItem('menu', JSON.stringify(fetched));
     }
 
     useEffect(() => {
@@ -50,7 +57,10 @@ const layout = ({ children }: any) => {
 
     return (
         <>
-            <Header data={states} menuData={menuData} />
+            <Header
+                data={states}
+                menuData={menuData}
+            />
             {children}
             <Footer />
         </>
